@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.eazybytes.loans</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>loans</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>demo</name>
+	<name>loans</name>
 	<description>Microservice project for Loans</description>
 	<properties>
 		<java.version>17</java.version>
@@ -70,7 +70,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>omkar7781/loans:s4</name>
+						<name>omkar7781/${project.artifactId}:s4</name>
 					</image>
 					<excludes>
 						<exclude>
