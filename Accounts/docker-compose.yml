@@ -1,0 +1,46 @@
+services:
+#  service name
+  accounts:
+    image: "omkar7781/accounts:s4"
+#    docker assigns random names to containers, so we provide it explicitly
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+#    maximum memory limit for the container
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+#          so that the microservices communicate with each other we need to tag
+#          them under the same network.
+    networks:
+      - omkar7781
+
+  loans:
+    image: "omkar7781/loans:s4"
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - omkar7781
+  cards:
+    image: "omkar7781/cards:s4"
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - omkar7781
+
+networks:
+  omkar7781:
+#    with this we are telling the docker server create a network with the name
+#    omkar7781 with the driver "bridge"
+    driver: "bridge"
